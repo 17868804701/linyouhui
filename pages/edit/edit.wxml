@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="profile">
+    <view class="weui-cells weui-cells_access">
+      <view class="weui-cell" id="avatarCell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text>头像</text>
+        </view>
+        <view class="weui-cell__ft">
+          <image class="weui_avatar" src="{{userInfo.headimgurl}}" alt></image>
+        </view>
+      </view>
+    </view>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+    <input name="id" value="{{userInfo.mid}}" hidden="true"/>
+    <view class="weui-cells weui-cells_access">
+      <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text>姓名:</text>
+        </view>
+        <input name="name" placeholder="请输入真实姓名" value="{{userInfo.name ? userInfo.name : ''}}"/>
+        <view class="weui-cell__ft"></view>
+      </view>
+      <view class="weui-cell no_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text>手机:</text>
+        </view>
+         <input name="mobile" bindblur="bindblurphone" type='number' placeholder="请输入联系方式" value="{{userInfo.mobile ? userInfo.mobile : ''}}"/>
+        <view class="weui-cell__ft"></view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text>微信号:</text>
+        </view>
+         <input name="wechat" value="{{userInfo.wechat ? userInfo.wechat : ''}}" placeholder="请输入微信号"/>
+        <view class="weui-cell__ft">
+        </view>
+      </view>
+   
+    </view>
+    <button formType="submit" type="primary"  style="margin-top:20px">保存</button>
+    </form>
+  </view>
+     
+</view>

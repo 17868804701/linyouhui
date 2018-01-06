@@ -1,0 +1,134 @@
+<form bindsubmit="SubmitData" bindreset="Reset">
+<scroll-view scroll-y="true">
+<view class="text-input-wrap">
+<input value="{{shop_id}}" hidden="true" name="shop_id" />
+<input value="{{shop_name}}" hidden="true" name="shop_name" />
+<input value="{{user_id}}" hidden="true" name="user_id" />
+<input value="{{user_name}}" hidden="true" name="user_name" />
+<input value="{{user_img}}" hidden="true" name="user_img" />
+<input value="{{owner_id}}" hidden="true" name="owner_id" />
+    <view class="text-input-item">
+        <view class="name f1 c5">
+            名称
+        </view>
+        <input class="f1 c4" placeholder-class="ph-class" name="goods_name" placeholder="请输入商品名称" />
+    </view>
+     <view class="text-input-item">
+        <view class="name f1 c5">
+            商品分类
+        </view>
+        <picker bindchange="bindPickerChangeType" value="{{typeindex}}" range="{{typeArray}}">
+          <view class="picker">
+            <text style="text-decoration:underline;color:red;">{{typeArray[typeindex]}}</text>
+            <input name="cat_name" hidden="true" value="{{typeArray[typeindex]}}" disabled="true" />
+          </view>
+        </picker>
+    </view>
+    <view class="text-input-item">
+        <view class="name f1 c5">
+            商品价格(元)
+        </view>
+        <input class="f1 c4" name="goods_price" placeholder-class="ph-class" data-id="one" bindblur="checknum" placeholder="填写商品价格" value="{{one}}"/>
+    </view>
+
+    <view class="text-input-item">
+        <view class="name f1 c5">
+            手机号码
+        </view>
+        <input class="f1 c4" type='number' name="mobile" placeholder-class="ph-class"  bindblur="bindblurphone"  placeholder="填写联系号码" value="{{mobile}}"/>
+    </view>
+</view>
+<view class="text-pic-cell">
+    <view class="text-img-wrap">
+        <text class="section-item-left f1 c5">商品照片</text>
+        <image bindtap="choicePic" src="{{imgurl?imgurl:'../../images/icons/icon_add_pic.png'}}"></image>
+         <input value="{{imgurl}}" hidden="true" name="image" />
+     </view>
+</view>
+
+<view class="tag-choice-wrap">
+    <view class="choice-tag-cell">
+        <text class="f1 c5">商品规格(必填第一行)</text>
+    </view>
+    <view class="tag-list">
+        <input  name="spec1" class="f1 c4" placeholder-class="ph-class" placeholder="规格名称1" />
+        <input  name="price1" class="f1 c4" placeholder-class="ph-class" data-id="one" bindblur="checknum" placeholder="规格价格1" value="{{one}}" />
+        <input  name="store1" class="f1 c4" placeholder-class="ph-class" data-id="two" bindblur="checknum" value="{{two}}" placeholder="规格库存1" />
+        <input  name="spec2" class="f1 c4" placeholder-class="ph-class"   placeholder="规格名称2" />
+        <input  name="price2" class="f1 c4" placeholder-class="ph-class" data-id="three" bindblur="checknum" value="{{three}}" placeholder="规格价格2" />
+        <input  name="store2" class="f1 c4" placeholder-class="ph-class" data-id="four" bindblur="checknum" value="{{four}}" placeholder="规格库存2" />
+        <input  name="spec3" class="f1 c4" placeholder-class="ph-class"   placeholder="规格名称3" />
+        <input  name="price3" class="f1 c4" placeholder-class="ph-class" data-id="five" bindblur="checknum" value="{{five}}" placeholder="规格价格3" />
+        <input  name="store3" class="f1 c4" placeholder-class="ph-class" data-id="six" bindblur="checknum" value="{{six}}" placeholder="规格库存3" />
+    </view>
+</view>
+<view class="text-textarea-wrap" hidden="{{pannel ? 'true': ''}}">
+    <text class="f1 c5">商品描述</text>
+    <textarea name="goods_content" placeholder-class="ph-class" placeholder="简介..." />
+</view>
+<view class="tag-choice-wrap">
+    <view class="choice-tag-cell" bindtap="Chosedel">
+    <text class="f1 c5">请选择发货方式</text>
+    <image class="arrow-right" src="../../images/icons/icon_arrow.png"></image>
+    </view>
+</view>
+<view class="text-textarea-wrap" bindtap="addinfo">
+    <text class="f1 c5">图片多选(最多5张)</text>
+    <image style="width:100%;" mode="widthFix" src="{{imgitem}}" wx:for="{{imgurlArr}}" wx:key="imgIndex" wx:for-item="imgitem"></image>
+    <input value="{{goods_img}}" hidden="true" name="goods_img" />
+</view>
+
+
+<button class="btn stop-btn f2" form-type="submit">提交商品</button>
+<button class="btn close-btn f2" style="margin-top: 40rpx;margin-bottom: 40rpx;" form-type="reset">清空内容</button>
+
+<view class="mask" hidden="{{hidden ? 'true': ''}}">
+    <view class="tag-wrap" style="height: 800rpx;">
+        <view class="title bgc">选择快递方式</view>
+        <input type="text" hidden="true" name="address" value="{{receive}}"/>
+        <input type="text" hidden="true" name="shipping_ids" value="{{delive}}"/>
+        <view class="tab">
+            <view class="nav {{currTabIndex == 1 ? 'active' : ''}}" data-index="1" bindtap="switchTap">自提</view>
+            <view class="nav {{currTabIndex == 2 ? 'active' : ''}}" data-index="2" bindtap="switchTap">快递</view>
+        </view>
+        <form>
+        <scroll-view class="tag-list" scroll-y="true">
+            <view class="weui-cells weui-cells_after-title" hidden="{{currTabIndex == 1 ? '' : 'true'}}" >
+            <checkbox-group bindchange="checkboxChange">
+                <label class="weui-cell weui-check__label" wx:for="{{address}}" wx:for-index="value">
+                    <checkbox class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+
+                    <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                        <icon class="weui-icon-checkbox_circle" type="circle" size="23"  wx:if="{{!item.checked}}"></icon>
+                        <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                    </view>
+                    <view class="weui-cell__bd">{{item.name}}</view>
+                </label>
+            </checkbox-group>
+          </view>
+            <view class="weui-cells weui-cells_after-title" hidden="{{currTabIndex == 2 ? '' : 'true'}}" >
+            <checkbox-group bindchange="checkboxDelivery">
+                <label class="weui-cell weui-check__label" wx:for="{{delivery}}" wx:for-index="value">
+                    <checkbox class="weui-check" value="{{value}}" checked="{{item.checked}}"/>
+
+                    <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                        <icon class="weui-icon-checkbox_circle" type="circle" size="23"  wx:if="{{!item.checked}}"></icon>
+                        <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                    </view>
+                    <view class="weui-cell__bd">{{item.title}}</view>
+                </label>
+            </checkbox-group>
+            <navigator url="../delivery/add">
+                <view class="weui-cell weui-cell_link">
+                <view class="weui-cell__bd">添加更多</view>
+                </view>
+            </navigator>
+            
+        </view>
+        </scroll-view>
+        <view class="confirm-btn bgc" catchtap="confirmTag">确认</view>
+        </form>
+    </view>
+</view>
+</scroll-view>
+</form>

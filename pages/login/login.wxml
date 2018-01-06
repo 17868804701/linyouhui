@@ -1,0 +1,23 @@
+<view class="login-container">
+<modal hidden="{{hidden}}"
+    title="用户协议"
+     confirm-text="同意"
+     cancel-text="退出"
+     bindconfirm="agree"
+     bindcancel="logout" >
+     <text bindtap="opens" style="color:#FFC8B4;text-decoration:underline;">同意《邻有惠平台服务协议》</text>
+</modal>
+  <view class="header">
+    <picker bindchange="bindPickerChange"  range="{{group}}" range-key="{{'shop_name'}}" value="{{group[indexId]['id']}}">
+      <view class="picker">
+        <view>请选择您要进入的群组: </view> <text style="color:red;text-decoration:underline;"> {{group[indexId]['shop_name']}}</text>    
+      </view>
+    </picker>
+  </view>
+
+  
+  <view class="footer-btn">
+    <button type="primary" bindtap="loginbtn">登录商城</button>
+    <!--<button type="warn" bindtap="checkbtn">提交验证</button>-->
+  </view>
+</view>

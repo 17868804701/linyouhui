@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="carts">
+    <view class="weui-tab" id="tab">
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content">
+          <view class=" padding-wrap">
+
+
+            <view class="weui-cell weui-cell__access bg_color items-container" wx:for="{{listgoods}}">
+              <view class="weui-cell_hd">
+                <image src="{{item.goods_img}}" alt class="carts-image"></image>
+              </view>
+              <view class="weui-cell_bd carts-content" bindtap="lookdetail" data-id="{{item.id}}">
+                <view class="carts-title">
+                  <text >{{item.goods_name}}</text>
+                </view>
+                <view class="carts-price">
+                 <text >¥{{item.goods_price}}</text>
+                </view>
+                
+              </view>
+              <view class="carts-btn" >
+                 <button class="downbtn" bindtap="upgood" data-id="{{item.id}}" data-status="{{item.is_on_sale}}" wx:if="{{item.is_on_sale}}" >上架</button>
+                 <button class="upbtn" bindtap="upgood" data-id="{{item.id}}" data-status="{{item.is_on_sale}}" wx:if="{{!item.is_on_sale}}"  >下架</button>
+                 <button bindtap="delgood" data-id="{{item.id}}">删除</button>
+                </view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

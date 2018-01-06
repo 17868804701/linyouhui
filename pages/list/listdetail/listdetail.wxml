@@ -1,0 +1,96 @@
+
+<!--<view class="list-tab">
+  <ul>
+    <li class="{{current == 0 ? 'active' : ''}}" catchtap="switchSlider" data-index="0">默认</li>
+    <li class="{{current == 1 ? 'active' : ''}}" catchtap="switchSlider" data-index="1">最新</li>
+    <li class="{{current == 2 ? 'active' : ''}}" catchtap="switchSlider" data-index="2">热销</li>
+  </ul>
+</view>-->
+<swiper class="swiper-box" current="{{current}}" indicator-dots="{{swiper.indicatorDots}}" autoplay="{{swiper.autoplay}}" interval="{{swiper.interval}}" duration="{{swiper.duration}}" bindchange="changeSlider">
+
+    <!-- 1 -->
+    <swiper-item>
+      <scroll-view scroll-y="true" class="scroll-box">
+        <view class="list-view">
+          <view class="list-box" wx:for="{{listgoods}}" wx:for-item="list1"  wx:key="index1">
+
+            <view class="list-images" catchtap="lookdetail"    data-id="{{list1.id}}">
+              <image src="{{list1.image}}" />
+            </view>
+
+            <view class="list-text" catchtap="lookdetail"   data-id="{{list1.id}}">
+              <text class="name">{{list1.goods_name}}</text>
+              <view class="txt">
+                <text class="price">￥{{list1.goods_price}}</text>
+
+                <text class="type">分类：{{list1.cat_name}}</text>
+              </view>
+            </view>
+
+            <view class="addcart">
+              <image src="/images/icon/btn-tabs_09.png"></image>
+              </view>
+
+
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!--2  -->
+    <swiper-item>
+      <scroll-view scroll-y="true" class="scroll-box">
+        <view class="list-view">
+          <view class="list-box" wx:for="{{listgoods2}}" wx:for-item="list2" wx:key="index2" bindtap="lookdetail">
+
+            <view class="list-images" catchtap="lookdetail"    data-id="{{list2.id}}">
+              <image src="{{list2.image}}" />
+            </view>
+
+            <view class="list-text" catchtap="lookdetail"   data-id="{{list2.id}}">
+              <text class="name">{{list2.goods_name}}</text>
+              <view class="txt">
+                <text class="price">￥{{list2.goods_price}}</text>
+                <text class="type">店铺：{{list2.cat_name}}</text>
+              </view>
+            </view>
+
+            <view class="addcart">
+              <image src="/images/icon/btn-tabs_09.png"></image>
+              </view>
+            
+
+
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+    <!-- 3 -->
+    <swiper-item>
+      <scroll-view scroll-y="true" class="scroll-box">
+        <view class="list-view">
+          <view class="list-box" wx:for="{{listgoods3}}" wx:for-item="list3" wx:key="index3">
+
+            <view class="list-images" catchtap="lookdetail"    data-id="{{list3.id}}">
+              <image src="{{list3.image}}" />
+            </view>
+
+            <view class="list-text" catchtap="lookdetail"   data-id="{{list3.id}}">
+              <text class="name">{{list3.goods_name}}</text>
+              <view class="txt">
+                <text class="price">￥{{list3.goods_price}}</text>
+                <text class="type">店铺：{{list3.cat_name}}</text>
+              </view>
+            </view>
+
+            <view class="addcart">
+              <image src="/images/icon/btn-tabs_09.png"></image>
+              </view>
+              
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+
+</swiper>

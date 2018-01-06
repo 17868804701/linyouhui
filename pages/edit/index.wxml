@@ -1,0 +1,48 @@
+<view class="container">
+  <view class="profile">
+    <view class="weui-cells weui-cells_access">
+      <view class="weui-cell" id="avatarCell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text>头像</text>
+        </view>
+        <view class="weui-cell__ft">
+          <image class="weui_avatar" src="{{userInfo.headimgurl}}" alt></image>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_access">
+      <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text>昵称</text>
+        </view>
+        <input name="name" value="{{userInfo.nickname ? userInfo.nickname : ''}}" disabled="true"/>
+        <view class="weui-cell__ft"></view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text>姓名</text>
+        </view>
+        <input name="name"  value="{{userInfo.name ? userInfo.name : ''}}"  disabled="true"/>
+        <view class="weui-cell__ft"></view>
+      </view>
+      <view class="weui-cell no_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text>电话</text>
+        </view>
+         <input name="mobile"   value="{{userInfo.mobile ? userInfo.mobile : ''}}"  disabled="true"/>
+        <view class="weui-cell__ft"></view>
+      </view>
+
+      <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text>微信号</text>
+        </view>
+         <input name="wechat" value="{{userInfo.wechat ? userInfo.wechat : ''}}"  disabled="true"/>
+        <view class="weui-cell__ft">
+        </view>
+      </view>
+   
+    </view>
+  </view>
+     
+</view>

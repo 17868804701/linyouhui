@@ -1,0 +1,12 @@
+<!--pages/review/review.wxml-->
+<view class="review-container">
+  <scroll-view class="review-scroll" scroll-y="true"  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
+    <view class="review-item" wx:for="{{reviewData}}" wx:for-index="index" >
+        <text>{{item.brief}}  {{item.time}}</text>
+        <view class="btnView" wx:if="{{item.status == 0}}">
+        <button data-id="{{item.id}}" type="primary" bindtap="read">已读</button>
+        </view>
+        
+    </view>
+  </scroll-view>
+</view>

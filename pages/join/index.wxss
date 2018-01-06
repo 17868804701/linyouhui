@@ -1,0 +1,79 @@
+/* pages/review/review.wxss */
+
+page {
+  height: 100%;
+  width: 100%;
+}
+
+review-conatiner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: lightgrey;
+}
+
+.review-item {
+  margin-top: 20rpx;
+  display: flex;
+  padding: 20rpx;
+  border-bottom: 1px solid #ccc;
+  justify-content: space-between;
+  border-radius: 12px;
+}
+.review-item .text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20rpx;
+}
+.review-item .text text{
+  font-size: 14px;
+}
+.review-item .icon{
+    width: 100rpx;
+    height:100rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10rpx;
+}
+.review-item .icon image{
+  width: 100rpx;
+    height:100rpx;
+}
+.review-item .icon text{
+  font-size: 12px;
+  text-align: center;
+    overflow: hidden;
+}
+.review-item .button {
+  margin: 5rpx 10px 0 80rpx;
+}
+.review-item .button .button1{
+  margin-top: 10rpx;
+}
+.review-item .button .button2{
+  margin-top: 36rpx;
+}
+/*.review-item text{
+    width: 360rpx;
+    text-align: center
+}*/
+
+.review-item view {
+  width: 100%;
+  height:160rpx;
+}
+
+.review-item button {
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 12px;
+}
+
+/*.review-scroll{
+    width: 100%;
+    display: flex;
+}*/

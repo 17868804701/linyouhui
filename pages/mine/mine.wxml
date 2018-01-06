@@ -1,0 +1,164 @@
+<view class="container">
+  <view class="profile">
+    <view class="weui-cells weui-cells_access">
+      <view class="weui-cell" id="avatarCell" >
+        <view class="weui-cell__hd">
+          <image class="weui_avatar" src="{{userInfo.avatarUrl}}" alt></image>
+        </view>
+        <view class="weui-cell__bd weui-cell_primary" style="margin-left:30rpx;" bindtap="onEditTap">
+          <text class="weui_nickname">{{userInfo.nickName}}</text>
+          <image class="user-phone" src="../../images/icon/phone.png"></image>	 
+          <text class="weui_tel">请填写联系方式</text> 
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+        
+      </view>
+    </view>
+
+ <view class="weui-cells weui-cells_access">
+      <view class="weui-cell" bindtap="tap_review">
+        <view class="weui-cell__hd">
+          <image class="weui_icon" src="../../images/icon/message.png"></image>
+        </view>
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font">消息通知</text>
+        </view>
+        <view class="weui-cell__ft">{{num3}}
+        </view>
+      </view>
+      <view class="weui-cell" bindtap="tap_collect">
+        <view class="weui-cell__hd">
+          <image class="weui_icon" src="../../images/icon/star.png"></image>
+        </view>
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font">群组列表</text>
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells weui-cells_access" wx:if="{{admin}}">
+    <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font title">管理员菜单</text>
+        </view>
+      </view>
+      <view class="weui-cell" bindtap="apply">
+        <view class="weui-cell__hd">
+          <image class="weui_icon" src="../../images/icons/user-selected.png"></image>
+        </view>
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font">入群申请</text>
+        </view>
+        <view class="weui-cell__ft">{{num2}}
+        </view>
+      </view>
+       <view class="weui-cell" bindtap="addgoods">
+        <view class="weui-cell__hd">
+          <image class="weui_icon" src="../../images/icons/cart-selected.png"></image>
+        </view>
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font">商品审核</text>
+        </view>
+        <view class="weui-cell__ft">{{num1}}
+        </view>
+      </view>
+      <view class="weui-cell" bindtap="tap_Manage">
+        <view class="weui-cell__hd">
+          <image class="weui_icon" src="../../images/icons/home-selected.png"></image>
+        </view>
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font">管理店铺</text>
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells weui-cells_access">
+    <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font title">买家菜单</text>
+        </view>
+      </view>
+      <view class="weui-cell" bindtap="tap_order">
+        <view class="weui-cell__hd">
+          <image class="weui_icon" src="../../images/icon/order.png"></image>
+        </view>
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font">我的订单</text>
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+      </view>
+       <view class="weui-cell" bindtap="tap_address">
+        <view class="weui-cell__hd">
+          <image class="weui_icon" src="../../images/icon/ic_position_red.png"></image>
+        </view>
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font">联系地址</text>
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+      </view>
+      
+    </view>
+    <view class="weui-cells weui-cells_access">
+    
+    <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font title">卖家菜单</text>
+        </view>
+      </view>
+
+      <view class="weui-cell" bindtap="tap_mallManage">
+        <view class="weui-cell__hd">
+          <image class="weui_icon" src="../../images/icons/category-selected.png"></image>
+        </view>
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font">商品管理</text>
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+      </view>
+
+      <view class="weui-cell" bindtap="tap_orderAdmin">
+        <view class="weui-cell__hd">
+          <image class="weui_icon" src="../../images/icon/mall.png"></image>
+        </view>
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font">买家订单</text>
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+      </view>
+
+       <view class="weui-cell" bindtap="to_delivery">
+        <view class="weui-cell__hd">
+          <image class="weui_icon" src="../../images/icon/cart-actived.png"></image>
+        </view>
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font">运费模板</text>
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+      </view>
+      
+      <view class="weui-cell" bindtap="tap_addgoods">
+        <view class="weui-cell__hd">
+          <image class="weui_icon" src="../../images/icons/add.png"></image>
+        </view>
+        <view class="weui-cell__bd weui-cell_primary">
+          <text class="weui_font">提交商品</text>
+        </view>
+        <view class="weui-cell__ft">
+        </view>
+      </view>
+
+    
+
+    </view>
+  </view>
+</view>

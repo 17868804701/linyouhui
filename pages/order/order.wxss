@@ -1,0 +1,256 @@
+page {
+  background: #f6f6f6;
+}
+.comment {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 200rpx;
+  width: 100%;
+  z-index: important;
+}
+.close {
+    width: 40rpx;
+    height: 40rpx;
+    float: right;
+    /*background: gainsboro;*/
+    z-index: 1000;
+}
+.comment .box{
+  background:#fff;
+border-radius:12rpx;
+border: 1px solid #008842;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 600rpx;
+}
+.comment .box .title{
+  padding:15px;
+font:20px "microsoft yahei";
+text-align:center;
+}
+.comment .box button{
+  margin-top: 0rpx;
+  width: 70%;
+  height: 100rpx;
+  justify-content: center;
+}
+.drawer_content{
+  display: flex;
+  justify-content: center;
+  height: 60%;
+  border-top: 2rpx solid #D9D9D9;
+  border-bottom: 1px solid #D9D9D9; 
+  /*margin-bottom: 90rpx;*/
+}
+.text-textarea-wrap{
+  width: 100%;
+}
+.text-textarea-wrap textarea {
+width:560rpx;
+height:150px;
+display:block;
+position:relative;
+
+}
+
+.weui-pull {
+  transition: all 0.3s;
+  transform: translate3d(0px, -40px, 0px);
+}
+
+.weui-pull__tips {
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+  color: #888;
+}
+
+.weui-pull_loading {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: -4px;
+  -webkit-animation: loadingAnimation 1s steps(12) infinite;
+  animation: loadingAnimation 1s steps(12) infinite;
+  background: transparent url() no-repeat;
+  background-size: 100%;
+}
+
+.weui-tab__panel {
+  padding-top: 0;
+  padding-bottom: 50px;
+}
+
+.bg_color {
+  background-color: #f0eff5;
+}
+
+.padding-wrap {
+  padding: 10px 15px;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.items-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.weui-media-box:before {
+  border-top: 0;
+}
+
+.wx-checkbox-input {
+  border-radius: 50% !important;
+}
+
+.content-color{
+  background-color: #fff;
+}
+
+/*左部图片*/
+
+.carts-image {
+  width: 120rpx;
+  height: 120rpx;
+  display: block;
+  /*border-radius: 5px;*/
+  margin-right: 10px;
+}
+
+/*右上部分标题*/
+
+.carts-title {
+  margin: 10rpx;
+  font-size: 30rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/*价格*/
+
+.carts-price {
+  display: inline-block;
+  width: 50%;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* 单价 */
+.origin{
+    font-size: 14px;
+}
+
+/*总价*/
+.total {
+  color: #6cf;
+  text-align: right;
+}
+
+/*顶部导航栏*/
+
+.top-nav {
+  width: 750rpx;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+.top-nav-bar {
+  display: flex;
+  justify-content: space-around;
+  font-size: 13px;
+  padding: 10px 0;
+  background-color: #fff;
+  border-top: 1px solid #e5e5e5;
+}
+
+.top-nav-bar .active {
+  /*border-bottom: 2px solid #09bb07;*/
+  border-bottom: 2px solid #008842;
+}
+
+.ma-top-120 {
+  margin-top: 120rpx;
+}
+
+.operate {
+  text-align: right;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 10rpx;
+}
+
+.operate .operate-item {
+  font-size: 12px;
+  color: #fff;
+  padding: 14rpx 18rpx;
+  background-color:red;
+  border-radius: 5px;
+}
+
+.operate .pay {
+  margin-right: 30rpx;
+   background-color:#008842;
+}
+.order_img{
+  display: flex;
+  flex-direction: column
+}
+.total{
+  color: red;
+}
+.all-total{
+  font-size: 14px;
+   color: red;
+   float:left;
+   margin-right:14rpx; 
+}
+
+.zz-box{
+  height:100%;
+  width: 100%;
+
+}
+.weui-mask {
+    height:100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background:rgba(0, 0, 0, 0.6);
+}
+.qrcode{
+  background: #fff;
+  height: 60%;
+  width: 65%;
+  position:fixed;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+  border-radius: 10rpx;
+  padding: 10% 5%;
+}
+
+.qrcode text{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.qrcode image{
+  width: 100%;
+  margin: 10% 0;
+}
+.bianhao{
+  font-size: 14px;
+  color: #ccc;
+}

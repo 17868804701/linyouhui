@@ -1,0 +1,21 @@
+<view class="item" wx:for="{{list}}" data-ids="{{item.id}}" bindtap="edit">
+     <view class="close-box">
+        <view class="title">{{item.title}}</view>
+        <image class="close" data-id="{{item.id}}" catchtap="del" src="/images/icon/round_close.png" >X</image>
+    </view>
+     <view class="content">
+          <view class="type">
+            <text>类型:</text>
+            <text style="color:red;">{{item.type}}</text>
+          </view>
+          <view class="price">
+               <text>价钱:</text>
+               <text style="color:red;">￥{{item.price}}</text>
+          </view>
+     </view>
+     <view class="content"><text>发货地: {{item.province}}-{{item.city}}</text></view>
+</view>
+<view class="btn-box">
+    <button type="primary" class="btn" bindtap="Toadd">添加运费模版</button>
+</view>
+

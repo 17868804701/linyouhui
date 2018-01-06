@@ -1,0 +1,45 @@
+<form bindsubmit="hasAddress">
+<view class="content">
+  <view class="content-box">
+  <input type="text" hidden="true" name="user_id" value="{{user_id}}"/>
+  <input type="text" name="shop_id" value="{{shop_id}}" hidden="true"/>
+  <input type="text" name="id" value="{{del.id}}" hidden="true"/>
+  <!--<input type="text" name="type" value="{{type ? type : 0}}" hidden="true"/>-->
+    <view class="input-personal">
+      <view>
+        模版名称：
+      </view>
+      <input type="text" name="title" bindblur="bindblurname" placeholder="请输入名称" value="{{del.title}}"/>
+    </view>
+    <view class="input-personal">
+      <view>
+        运费(元)：
+      </view>
+      <input type="text" name="price" bindblur="bindblurprice" value="{{del.price}}" placeholder="快递运费" />
+    </view>
+    <view class="input-personal">
+      <view>
+        模板类型：
+      </view>
+      <!--<input type="text" bindblur="bindblurphone" placeholder="快递运费" />-->
+      <picker style="width:282px;float:left;" bindchange="bindPickerChange" value="{{typeindex[index]}}" name="type" range="{{typeindex}}" name="type">
+          <view >
+            {{typeindex[index]}}
+          </view>
+        </picker>
+    </view>
+     <view class="city">
+      <view class="city-name">发货地:</view>
+      <view class="city-lists">
+      <import src="../../templates/address-temp"/>
+      <template is="addressPicker" data="{{provinceIndex:city.provinceIndex,cityIndex:city.cityIndex,districtIndex:city.districtIndex,province:city.province,city:city.city[city.selectedProvince],district:city.district[city.selectedCity]}}"/>
+      </view> 
+    </view>
+    
+
+  </view>
+  <view class="btn-address" >
+    <button type="primary" form-type="submit">确定</button>
+  </view>
+</view>
+</form>

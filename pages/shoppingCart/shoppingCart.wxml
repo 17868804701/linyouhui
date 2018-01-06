@@ -1,0 +1,61 @@
+<view class="shoppingCart-container">
+
+  <modal class="noGood" title="您的购物车中没有商品" confirm-text="随便逛逛" cancel-text="取消" hidden="{{modalHidden}}" bindconfirm="signConfirm" bindcancel="signCancel">
+  </modal>
+  <view class="hasGood">
+    <ul class="goodList">
+    <checkbox-group bindchange="checkboxChange">
+      <view class="view" wx:for="{{shoppingCartInfo}}" wx:for-item="item">
+          <label style="display:flex;">
+              <checkbox class="weui-check" value="{{index}}" checked="{{item.checked == 1 ? true : false}}"/>
+              <view style="display:flex;">                 
+                        <icon class="weui-icon-checkbox_circle" type="circle" size="23"  wx:if="{{item.checked == 0}}"></icon>
+                        <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked == 1}}"></icon>
+              </view>
+          
+          
+        <view class="pic">
+          <image src="{{item.image}}"></image>
+        </view>
+        </label>
+        <view class="info">
+          <view class="title">
+            <text class="tit-content">{{item.goods_name}}</text>
+            
+            <image bindtap="deleteGood" class="modal-close" data-id="{{index}}"  src="/images/icon/round_close.png" />
+          </view>
+          <text class="sepc">规格:{{item.specname}}</text>
+          <view class="number">
+            <text class="price">￥{{item.goods_price}}</text>
+            <view class="quantity">
+              <text class="sub" bindtap="sub" data-index="{{index}}">－</text>
+              <input value="{{item.goods_sum}}" disabled="true"/>
+              <text class="add" bindtap="add" data-index="{{index}}">＋</text>
+            </view>
+          </view>
+        </view>
+        <view class="address">
+          <view>
+            地址:
+            <text> {{item.address}}</text>
+          </view>
+          <text>邮费:{{item.mailprice * item.goods_sum}}</text>
+        </view>
+      
+      </view>
+    </checkbox-group>
+    </ul>
+    <view class="footer">
+      <ul>
+        <li class="goodAll">
+          <text>总价:</text>
+          <text>￥{{allMoney}}</text>
+        </li>
+        <li class="calcute" bindtap="checkOut">
+          <text>结算</text>
+        </li>
+      
+      </ul>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,148 @@
+<view class="weui_tab">
+  <view class="weui_navbar" style="height:44px;">
+    <view class="weui_navbar_item  {{currentIndex == 4 ? 'tab-blue' :''}}" catchtap="switchSlider" data-index="4">
+    驳回商品
+    </view>
+    <view class="weui_navbar_item  {{currentIndex == 0 ? 'tab-blue' :''}}" catchtap="switchSlider" data-index="0">
+      等待审核
+    </view>
+    <view class="weui_navbar_item {{currentIndex == 1 ? 'tab-blue' :''}}" catchtap="switchSlider" data-index="1">
+      通过审核
+    </view>
+    <view class="weui_navbar_item {{currentIndex == 2 ? 'tab-blue' :''}} " catchtap="switchSlider" data-index="2">
+      商品销量
+    </view>
+    <view class="weui_navbar_item {{currentIndex == 3 ? 'tab-blue' :''}} " catchtap="switchSlider" data-index="3">
+      商品评论
+    </view>
+  </view>
+  <view class="weui_tab_bd">
+    <view class="weui_tab_bd_item" style="display:{{currentIndex == 0 ? 'block' : 'none'}};">
+      <view class="weui-tab__content">
+        <view class=" padding-wrap">
+          <view class="weui-cell weui-cell__access bg_color items-container" wx:for="{{listgoods}}">
+            <view class="weui-cell_hd" bindtap="lookdetail" data-id="{{item.id}}">
+              <image src="{{item.goods_img}}" alt class="carts-image"></image>
+            </view>
+            <view class="weui-cell_bd carts-content" bindtap="lookdetail" data-id="{{item.id}}">
+              <view class="carts-title">
+                <text>{{item.goods_name}}</text>
+              </view>
+              <view class="carts-price">
+                <text>¥{{item.goods_price}}</text>
+              </view>
+            </view>
+            <view class="carts-btn">
+              <button class="downbtn" bindtap="addgood" data-id="{{item.id}}" data-name="{{item.goods_name}}" data-image="{{item.goods_img}}" wx:if="{{item.is_on_sale}}">上架</button>
+              <!--<button class="upbtn" bindtap="upgood" data-id="{{item.id}}" data-status="{{item.is_on_sale}}" wx:if="{{!item.is_on_sale}}"  >下架</button>-->
+              <button bindtap="delgood" data-id="{{item.id}}">删除</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui_tab_bd_item" style="display: {{currentIndex == 1 ? 'block' : 'none'}};">
+      <view class="weui-tab__content">
+        <view class=" padding-wrap">
+          <view class="weui-cell weui-cell__access bg_color items-container" wx:for="{{mygoods}}">
+            <view class="weui-cell_hd" bindtap="lookdetail" data-id="{{item.id}}">
+              <image src="{{item.goods_img}}" alt class="carts-image"></image>
+            </view>
+            <view class="weui-cell_bd carts-content" bindtap="lookdetail" data-id="{{item.id}}">
+              <view class="carts-title">
+                <text>{{item.goods_name}}</text>
+              </view>
+              <view class="carts-price">
+                <text>¥{{item.goods_price}}</text>
+              </view>
+            </view>
+            <view class="carts-btn">
+              <!--<button class="downbtn" bindtap="upgood" data-id="{{item.id}}" data-status="{{item.is_on_sale}}" wx:if="{{item.is_on_sale}}" >上架</button>-->
+              <button class="upbtn" bindtap="upgood" data-id="{{item.id}}" data-status="{{item.is_on_sale}}" wx:if="{{!item.is_on_sale}}">下架</button>
+              <button bindtap="delgood" data-id="{{item.id}}">删除</button>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="weui_tab_bd_item" style="display: {{currentIndex == 2 ? 'block' : 'none'}};">
+      <view class="weui-tab__content">
+        <view class=" padding-wrap">
+          <view class="weui-cell weui-cell__access bg_color items-container" wx:for="{{allgoods}}">
+            <view class="weui-cell_hd" bindtap="lookdetail" data-id="{{item.id}}">
+              <image src="{{item.goods_img}}" alt class="carts-image"></image>
+            </view>
+            <view class="weui-cell_bd carts-content" bindtap="lookdetail" data-id="{{item.id}}">
+              <view class="carts-title">
+                <text>{{item.goods_name}}</text>
+              </view>
+              <view class="carts-price">
+                <text>¥{{item.goods_price}}</text>
+              </view>
+            </view>
+            <view class="carts-sale">
+              <text>销量 {{item.sales_sum}}</text>
+              <text>所属 {{item.shop_name}}</text>
+            </view>
+            <view class="carts-spec">
+              <text>规格数量: </text>
+              <text wx:for="{{item.spec}}" wx:for-item="spec"> {{spec[0]}}:{{spec[2]}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui_tab_bd_item" style="display: {{currentIndex == 3 ? 'block' : 'none'}};">
+      <view class="weui-tab__content">
+        <view class="list">
+          <view class="item" wx:for="{{goodsCommentList}}">
+            <view class="user-info flex-wrp">
+              <view>
+                <image class="avatar" src="{{item.images ? item.images: '/images/icon/avatar_moren_daishu.png'}}" />
+              </view>
+              <view class="flex-item">
+                <view class="name">{{item.name ? item.name : '匿名用户' }}</view>
+                <view class="age">{{item.create_time}}</view>
+              </view>
+            </view>
+            <view class="comment">
+              <view class="text">{{item.brief}}</view>
+              <view class="status">已购买商品
+                <text class="sku">{{item.goods_name}} :{{item.sku_id}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+      <view class="weui_tab_bd_item" style="display:{{currentIndex ==4 ? 'block' : 'none'}};">
+      <view class="weui-tab__content">
+        <view class=" padding-wrap">
+          <view class="weui-cell weui-cell__access bg_color items-container" wx:for="{{listgoods}}">
+            <view class="weui-cell_hd" bindtap="lookdetail" data-id="{{item.id}}">
+              <image src="{{item.goods_img}}" alt class="carts-image"></image>
+            </view>
+            <view class="weui-cell_bd carts-content" data-id="{{item.id}}">
+              <view class="carts-title">
+                <text>{{item.goods_name}}</text>
+              </view>
+              <view class="carts-price">
+                <text>¥{{item.goods_price}}</text>
+              </view>
+            </view>
+            <view class="carts-btn">
+              <button class="downbtn" bindtap='editGoods' style='margin-top:20rpx;width:200rpx;'>修改商品</button>
+              <text class='tip_msg'>驳回原因：你的商品不符合国家标准</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+
+  </view>
+</view>

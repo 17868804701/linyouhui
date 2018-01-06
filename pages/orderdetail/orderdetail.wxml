@@ -1,0 +1,59 @@
+
+<!--pages/orderdetail/orderdetail.wxml-->
+<view class="orderdetail-container">
+  <view class="list-box">
+
+    <view class="list1">
+      <view>订单编号：{{order.order_sn}}</view>
+      <view>下单时间：{{order.add_time}}</view>
+      <view>待付金额：<text class="red"> ￥{{order.goods_price}}</text></view>
+      <view>订单状态: <text class="green">  {{order.order_status ==0 ?'未付款':'已付款'}}</text></view>
+    </view>
+
+    <view class="list2">
+      <view>{{order.pay_name}}
+        <text>{{order.mobile}}</text>
+      </view>
+      <!--<view class="address-box">取货地址：{{order.address}}</view>-->
+    </view>
+
+    <view class="list3">
+      <view class="goodall">共<text class="red"> {{num}} </text>件商品</view>
+      <view class="goodlist" wx:for="{{order.goods}}" data-id="{{item.goods_id}}" bindtap="detail">
+        <view class="goodimg">
+          <image src="{{item.goods_img}}"></image>
+        </view>
+        <view class="gooddetail">
+          <view class="" style="width:100%">{{item.goods_name}}</view>
+           <view style="font-size:12px;color:#ccc">地址：{{item.address}}</view>
+          <view class="goodprice">
+            <text> {{item.spec_key_name}} </text>
+            <text class="red"> {{item.goods_price}} </text>
+            <text>  {{item.goods_num}}(个/份) </text>
+          </view>
+          <view class="goodprice">
+            <text> 运费 </text>
+            <text> {{item.mail_price}} </text>
+            <text>  {{item.goods_num}}(个/份) </text>
+          </view>
+        </view>
+      </view>
+       
+    </view>
+
+    <view class="list4">
+
+        <text> 商品合计：</text>
+        <text class="red"> ￥{{order.goods_price}}</text>
+
+    </view>
+    <view class="list4">
+
+        <text>支付方式：</text>
+        <text class="green"> 微信</text>
+    </view>
+  </view>
+  <!--<view class="footer">
+  支付
+  </view>-->
+</view>

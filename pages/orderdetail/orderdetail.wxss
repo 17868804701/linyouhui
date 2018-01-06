@@ -1,0 +1,96 @@
+/* pages/orderdetail/orderdetail.wxss */
+
+page {
+  height: 100%;
+  width: 100%;
+}
+
+.orderdetail-container {
+  background: #ddd;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-box {
+  flex: 1;
+}
+
+.list1 {
+  margin: 20rpx 0;
+  background: #fff;
+  padding: 40rpx;
+}
+
+.list1 view {
+  font-size: 14px;
+  color: #999;
+  height: 60rpx;
+}
+
+.list2 {
+  margin: 20rpx 0;
+  background: #fff;
+  padding: 20rpx 40rpx;
+}
+
+.list2 view {
+  font-size: 14px;
+}
+
+.list3 {
+  margin: 20rpx 0;
+  background: #fff;
+  padding: 20rpx 40rpx;
+}
+
+.goodlist {
+  display: flex;
+  margin-top:20rpx;
+
+}
+
+.goodimg image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.goodall {
+  font-size: 14px;
+}
+
+.gooddetail {
+  font-size: 14px;
+  margin-left: 40rpx;
+}
+
+.gooddetail view {
+  margin-top: 4rpx;
+}
+
+.goodprice {
+  display: flex;
+  justify-content: space-between;
+  width: 480rpx;
+}
+
+.list4 {
+  margin: 20rpx 0;
+  background: #fff;
+  padding: 20rpx 40rpx;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+}
+.green{
+    color: #008842;
+}
+.red{
+    color: red;
+}
+.footer {
+  background: green;
+  height: 100rpx;
+  width: 100%;
+}

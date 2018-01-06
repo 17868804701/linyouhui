@@ -1,0 +1,20 @@
+<!--pages/review/review.wxml-->
+<view class="review-container">
+    <view class="review-item" wx:for="{{reviewData}}" wx:for-index="index" >
+      <view class="icon" data-id="{{item.user_id}}" catchtap="lookuser">
+          <image src="{{item.user_img}}"></image>
+          <text>{{item.user_name}}</text>
+      </view>
+       <view class="text">
+            <text>{{item.brief}}</text>
+       </view> 
+        
+        <view class="button" wx:if="{{item.status == 0}}">
+            <view class="btnView">
+            <button class="button1" data-id="{{index}}" type="primary" bindtap="pass">通过</button>
+            <button class="button2" data-id="{{index}}" type="default" bindtap="notPass">不通过</button>
+            </view>
+        </view>
+        
+    </view>
+</view>

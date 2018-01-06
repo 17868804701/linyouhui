@@ -1,0 +1,68 @@
+<view class="container">
+  <swiper autoplay="true" indicator-dots="true" interval="5000" duration="1000">
+    <swiper-item wx:for="{{swiper}}">
+      <image src="{{item}}" model="widthFix"></image>
+    </swiper-item>
+  </swiper>
+
+  <!--排序-->
+  <view class="header-wrap">
+    <view class="header-wrap-leftside fl">
+      <text class="leftside-font {{current == 0 ? 'active' : ''}}" data-hot="0" bindtap="new">最新</text>
+      <text class="{{current == 1 ? 'active' : ''}} leftside-font" data-hot="1" bindtap="hot">热门</text>
+      <text class="leftside-font {{current == 2 ?'active': ''}}" data-hot="2" bindtap="hot">价低</text>
+      <text class="leftside-font {{current == 3 ?'active': ''}}" data-hot="3" bindtap="hot">价高</text>
+    </view>
+  </view>
+
+  <!--商品-->
+  <view class="container-wrap">
+    <view class="side">
+
+      <!--每个商品-->
+      <view wx:for="{{goods}}" wx:key="index" class="{{index%2? 'container-wrap-rightside  fr'  : 'container-wrap-leftside  fl'}}   side-wrap" bindtap="lookdetail" data-id="{{item.id}}">
+        <image class="container-img" src="{{item.image}}" ></image>
+        <text class="container-content">{{item.goods_name}}</text>
+        <view class="container-price">
+          <text class="price-font fl">￥{{item.goods_price}}</text>
+          <image class="add-icon fr" src="{{item.avatar}}"></image>
+           <text class="add-user fr">{{item.user}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 筛选 -->
+<!--<view class="filter" style="display:{{display}}">
+  <view class="weui-mask weui-animate-fade-in" bindtap="tap_filter"></view>
+  <view class="filter-items">
+    <view class="weui-cells_access fliter_bgcolor">
+      <view class="weui-cell">
+        <image class="filter_back" bindtap="tap_filter" src="../../images/icon/back-1.png"></image>
+        <view class="filter_center">
+          <text>筛选</text>
+        </view>
+        <view>确定
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text>价格</text>
+        </view>
+        <view class="weui-cell__ft">全部
+        </view>
+      </view>
+      <view class="weui-cell no_access">
+        <view class="weui-cell__bd weui-cell_primary">
+          <text>销量</text>
+        </view>
+        <view class="weui-cell__ft">全部
+        </view>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn weui-btn_bgcolor" id="exitBtn">重置选项</button>
+    </view>
+  </view>
+</view>-->

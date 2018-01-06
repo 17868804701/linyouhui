@@ -1,0 +1,68 @@
+{
+  "debug": true,
+  "pages": [
+    "pages/index/index",
+    "pages/review/review",
+    "pages/login/login",
+    "pages/shoppingCart/shoppingCart",
+    "pages/manage/index",
+    "pages/collect/collect",
+    "pages/addgoods/index",
+    "pages/delivery/index",
+    "pages/delivery/add",
+    "pages/order/order",
+    "pages/list/list",
+    "pages/orderAdmin/orderAdmin",
+    "pages/list/listdetail/listdetail",
+    "pages/orderAdmin/detail",
+    "pages/orderdetail/orderdetail",
+    "pages/qrcode/index",
+    "pages/address/user-address/user-address",
+    "pages/mine/mine",
+    "pages/address/add",
+    "pages/cart/cart",
+    "pages/detail/index",
+    "pages/shop/goods/goods",
+    "pages/edit/edit",
+    "pages/edit/index",
+    "pages/message/index",
+    "pages/join/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#9ACD32",
+    "navigationBarTitleText": "邻友惠",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "backgroundColor": "#f3f2f7",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/icon/home-actived.png"
+      },
+      {
+        "text": "分类",
+        "pagePath": "pages/list/list",
+        "iconPath": "images/icon/nav-list.png",
+        "selectedIconPath": "images/icon/nav-listHL.png"
+      },
+      {
+        "text": "购物车",
+        "pagePath": "pages/shoppingCart/shoppingCart",
+        "iconPath": "images/icon/cart.png",
+        "selectedIconPath": "images/icon/cart-actived.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/mine/mine",
+        "iconPath": "images/icon/mine.png",
+        "selectedIconPath": "images/icon/mine-actived.png"
+      }
+    ]
+  }
+}

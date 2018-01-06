@@ -1,0 +1,207 @@
+<view class="top-nav">
+  <view class="top-nav-bar">
+    <view class="{{current == 0 ? 'active' : ''}}" catchtap="switchSlider" data-index="0">待付款</view>
+    <view class="{{current == 1 ? 'active' : ''}}" catchtap="switchSlider" data-index="1">待发货</view>
+    <view class="{{current == 2 ? 'active' : ''}}" catchtap="switchSlider" data-index="2">待取货</view>
+    <view class="{{current == 3 ? 'active' : ''}}" catchtap="switchSlider" data-index="3">待退款</view>
+    <view class="{{current == 4 ? 'active' : ''}}" catchtap="switchSlider" data-index="4">待评价</view>
+    <view class="{{current == 5 ? 'active' : ''}}" catchtap="switchSlider" data-index="5">已完成</view>
+  </view>
+</view>
+<view class="container" class="ma-top-120">
+  <view class="carts">
+  </view>
+  <view style="display:{{current == 0 ? 'block' : 'none'}}" class="carts">
+    <view class=" weui-panel__access" bindchange="changeSlider">
+      <view class="weui-panel__bd">
+        <view class="padding-wrap" wx:for="{{orderlist}}" >
+          <view class="bianhao">订单编号:{{item.order_sn}}</view>
+          <view class="weui-media-box weui-media-box_appmsg content-color" wx:for="{{item.goods}}" wx:for-item="itemlist" data-id="{{item.id}}" bindtap="detail">
+            <view class="weui-media-box__hd_in-appmsg">
+              <image src="{{itemlist.goods_img}}" alt class="weui-media-box__thumb carts-image"></image>
+            </view>
+            <view class="weui-media-box__bd_in-appmsg">
+              <text class="weui-media-box__desc">{{itemlist.goods_name}}</text>
+              <view class="">
+                <text class="carts-price origin">规格:{{itemlist.spec_key_name}}</text>
+                <text class="carts-price total">¥{{itemlist.goods_price}}*{{itemlist.goods_num}}</text>
+              </view>
+               <view class="classname"><text class="all-total">{{itemlist.create_time}}</text></view>
+            </view>
+          </view>
+          <view class="operate">
+            <text class="all-total">总价：￥{{item.goods_price}}</text>
+            <text class="operate-item pay" catchtap="payorder" data-id="{{item.order_sn}}">立即支付</text>
+            <text class="operate-item cancel" catchtap="delorder" data-id="{{item.id}}">取消订单</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="display:{{current == 1 ? 'block' : 'none'}}">
+    <view class=" weui-panel__access" bindchange="changeSlider">
+      <view class="weui-panel__bd">
+        <view class="padding-wrap" wx:for="{{orderlist}}">
+          <view class="bianhao">订单编号:{{item.order_sn}}</view>
+          <view class="weui-media-box weui-media-box_appmsg content-color"  data-id="{{item.id}}" bindtap="lookdetail">
+            <view class="weui-media-box__hd_in-appmsg">
+              <image src="{{item.goods_img}}" alt class="weui-media-box__thumb carts-image"></image>
+            </view>
+            <view class="weui-media-box__bd_in-appmsg">
+              <text class="weui-media-box__desc">{{item.goods_name}}</text>
+              <view class="">
+                <text class="carts-price origin">规格:{{item.spec_key_name}}</text>
+                <text class="carts-price total">¥ {{item.goods_price}} * {{item.goods_num}}</text>
+              </view>
+                <view class="classname"><text class="all-total">{{item.pay_time}}</text></view>
+            </view>
+          </view>
+          <view class="operate">
+            <text class="all-total">总价：￥{{item.sum}}</text>
+            
+            <text class="operate-item cancel" catchtap="refund" data-id="{{item.id}}">申请退款</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="display:{{current == 2 ? 'block' : 'none'}}">
+    <view class=" weui-panel__access" bindchange="changeSlider">
+      <view class="weui-panel__bd">
+        <view class="padding-wrap" wx:for="{{orderlist}}">
+          <view class="bianhao">订单编号:{{item.order_sn}}</view>
+          <view class="weui-media-box weui-media-box_appmsg content-color"  data-id="{{item.id}}" bindtap="lookdetail">
+            <view class="weui-media-box__hd_in-appmsg">
+              <image src="{{item.goods_img}}" alt class="weui-media-box__thumb carts-image"></image>
+            </view>
+            <view class="weui-media-box__bd_in-appmsg">
+              <text class="weui-media-box__desc">{{item.goods_name}}</text>
+              <view class="">
+                <text class="carts-price origin">规格:{{item.spec_key_name}}</text>
+                <text class="carts-price total">¥ {{item.goods_price}} * {{item.goods_num}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="operate">
+            <text class="all-total">{{item.pay_time}} </text>
+            <text wx:if="{{item.delivery_id != 0}}" class="operate-item cancel" style=" background-color:#008842;margin-right:10px;" catchtap="recive" data-id="{{item.id}}">确认收货</text>
+            <text wx:else class="operate-item cancel" style=" background-color:#008842;margin-right:10px;" catchtap="openqrcode" data-id="{{item.id}}">扫码取货</text>
+            <text class="operate-item cancel" catchtap="refund" data-id="{{item.id}}">申请退款</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="display:{{current == 4 ? 'block' : 'none'}}">
+    <view class=" weui-panel__access" bindchange="changeSlider">
+      <view class="weui-panel__bd">
+        <view class="padding-wrap" wx:for="{{orderlist}}" wx:for-item="itemlist">
+          <view class="bianhao">订单编号:{{itemlist.order_sn}}</view>
+          <view class="weui-media-box weui-media-box_appmsg content-color"  data-id="{{itemlist.id}}" bindtap="lookdetail">
+            <view class="weui-media-box__hd_in-appmsg">
+              <image src="{{itemlist.goods_img}}" alt class="weui-media-box__thumb carts-image"></image>
+            </view>
+            <view class="weui-media-box__bd_in-appmsg">
+              <text class="weui-media-box__desc">{{itemlist.goods_name}}</text>
+              <view class="">
+                <text class="carts-price origin">规格:{{itemlist.spec_key_name}}</text>
+                <text class="carts-price total">¥ {{itemlist.goods_price}} * {{itemlist.goods_num}}</text>
+              </view>
+              
+            </view>
+          </view>
+          <view class="operate">
+              <text class="all-total">{{itemlist.rec_time}}</text>
+            <text class="operate-item cancel" style="background:#9ACD32;color:#FFF" data-goodid="{{itemlist.goods_id}}" data-id="{{itemlist.id}}" data-order="{{item.order_sn}}"  data-spec="{{itemlist.spec_key_name}}" catchtap="comment">添加评论</text>
+          </view>
+          <!--<view class="operate">
+            <text class="all-total">总价：￥{{item.goods_price}}</text>
+            <text class="operate-item cancel" style="background:#9ACD32;color:#FFF" data-order="{{item.order_sn}}" catchtap="comment">添加评论</text>
+          </view>-->
+        </view>
+      </view>
+    </view>
+  </view>
+   
+  <view style="display:{{current == 3 ? 'block' : 'none'}}">
+    <view class=" weui-panel__access" bindchange="changeSlider">
+      <view class="weui-panel__bd">
+        <view class="padding-wrap" wx:for="{{orderlist}}" wx:for-item="itemlist">
+          <view class="bianhao">订单编号:{{itemlist.order_sn}}</view>
+          <view class="weui-media-box weui-media-box_appmsg content-color"    data-id="{{item.id}}" bindtap="lookdetail">
+            <view class="weui-media-box__hd_in-appmsg">
+              <image src="{{itemlist.goods_img}}" alt class="weui-media-box__thumb carts-image"></image>
+            </view>
+            <view class="weui-media-box__bd_in-appmsg">
+              <text class="weui-media-box__desc">{{itemlist.goods_name}}</text>
+              <view class="">
+                <text class="carts-price origin">规格:{{itemlist.spec_key_name}}</text>
+                <text class="carts-price total">¥ {{itemlist.goods_price}} * {{itemlist.goods_num}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="operate">
+            <text class="all-total">{{itemlist.pay_time}}</text>
+            <text class="operate-item cancel"  data-id="{{itemlist.id}}">退款中</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="display:{{current == 5 ? 'block' : 'none'}}">
+    <view class=" weui-panel__access" bindchange="changeSlider">
+      <view class="weui-panel__bd">
+        <view class="padding-wrap" wx:for="{{orderlist}}" wx:for-item="itemlist" >
+          <view class="bianhao">订单编号:{{itemlist.order_sn}}</view>
+          <view class="weui-media-box weui-media-box_appmsg content-color"  data-id="{{itemlist.id}}" bindtap="lookdetail">
+            <view class="weui-media-box__hd_in-appmsg">
+              <image src="{{itemlist.goods_img}}" alt class="weui-media-box__thumb carts-image"></image>
+            </view>
+            <view class="weui-media-box__bd_in-appmsg">
+              <text class="weui-media-box__desc">{{itemlist.goods_name}}</text>
+              <view class="">
+                <text class="carts-price origin">规格:{{itemlist.spec_key_name}}</text>
+                <text class="carts-price total">¥ {{itemlist.goods_price}} * {{itemlist.goods_num}}</text>
+              </view>
+              <!--<text style="font-size:12px;">地址:{{itemlist.address}}</text>-->
+            </view>
+          </view>
+          <view class="operate">
+            <text class="all-total">{{itemlist.rec_time}}</text>
+            <text class="operate-item cancel" style="background:#9ACD32;color:#FFF">{{itemlist.is_pay == 5 ? '已退款' : '已完成'}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+ 
+</view>
+<view class="zz-box" hidden="{{modelHidden}}">
+  <view class="weui-mask weui-animate-fade-in" bindtap="closemodel"></view>
+  <view class="qrcode">
+    <text>提货二维码</text>
+    <image src="../../images/post/qrcode.png"></image>
+    <button type="primary">确认收货</button>
+  </view>
+</view>
+<form hidden="{{commentForm}}" bindsubmit="addComment">
+<input hidden="true" name="id" value="{{id}}"/>
+<input hidden="true" name="goods_id" value="{{goods_id}}"/>
+<input hidden="true" name="user_id" value="{{user_id}}"/>
+<input hidden="true" name="order_id" value="{{order_id}}"/>
+<input hidden="true" name="sku_id" value="{{sku_id}}"/>
+<view class="comment">
+    <view class="box">
+      <view animation="{{animationData}}" class="drawer_box">
+        <!--drawer content-->
+        <view class="title">添加评论<image class="close"  catchtap="cancle" src="/images/icon/round_close.png" /></view>
+        <view class="drawer_content">
+          <view class="text-textarea-wrap">
+          <textarea name="brief" placeholder-class="ph-class" placeholder=" 商品怎样..." />
+          </view>
+        </view>
+        <button type="primary" form-type="submit" >确定</button>
+    </view>
+    </view>
+</view>
+</form>

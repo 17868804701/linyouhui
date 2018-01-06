@@ -1,0 +1,217 @@
+<form  bindsubmit="{{witch==1 ? 'dirBuy' : 'addToCart' }}">
+<image src="{{goods.image}}" mode="widthFix" style="width:100%;" />
+<input type="text" name="image" value="{{goods.image}}" hidden="true"/>
+<input type="text" name="goods_id" value="{{goods.id}}" hidden="true"/>
+<view class="section section-title">
+    <view class="price-item flex-wrp">
+        <view class="price flex-item">
+            <text class="char-rmb">¥</text>
+            <text class="price-num">{{goods.goods_price}}</text>
+            <view class="origin-price" wx:if="{{price < originalPrice}}">
+                <!--<text class="origin-num">¥{{originalPrice}}</text>-->
+            </view>
+        </view>
+        <veiw class="sale-count">已售<text class="sale-num">{{goods.sales_sum}}</text>件</veiw>
+    </view>
+    <view class="title">
+        <text>{{goods.goods_name}}</text>
+    </view>
+    <input type="text" name="goods_name" value="{{goods.goods_name}}" hidden="true"/>
+    <!--<view class="subtitle">{{subtitle}}</view>-->
+</view>
+
+
+<view class="section section-delivery">
+    <view class="location">
+        <view class="item">
+            <view class="title">送至</view>
+            <view class="content">
+                <view class="address ellipsis">
+                    <image class="icon" src="/images/icon/ic_position_red_min.png" />
+                    <text>当前位置</text>
+                </view>
+                <view class="arrive-time">现在下单，更快送达</view>
+            </view>
+        </view>
+        <view class="item">
+            <view class="title">运费</view>
+            <view class="content">自提点自提无需邮费，快递运输需自付运费</view>
+        </view>
+    </view>
+    <view class="service flex-wrp">
+        <view class="item flex-wrp" wx:for="{{goodsTag}}">
+            <image class="tag" src="{{item.pic}}" />{{item.view}}
+        </view>
+    </view>
+</view>
+
+
+<view class="section section-tabs">
+    
+    <view class="mmh-tabs">
+        <view class="tabs flex-wrp">
+            <block wx:for="{{tabs}}">
+                <view class="tab flex-item {{currTabIndex == index ? 'active' : ''}}" data-index="{{index}}" bindtap="_handleTabChange">{{item.title}}</view>
+            </block>
+        </view>
+
+        <view class="hr"></view>
+
+        <view class="content">
+            
+
+            <!--商品详情-->
+            <view class="item goods-desc {{currTabIndex != 0 ? 'hidden' : ''}}">
+
+                <block wx:for="{{goods.goods_img}}">
+                    <image src="{{item}}" mode="widthFix"/>
+                </block>
+            </view>
+
+            <!--商品参数-->
+            <view class="item goods-params {{currTabIndex != 1 ? 'hidden' : ''}}">
+                
+                <view class="title">商品介绍</view>
+                  <view class="item flex-wrp">
+                      <text class="key">商品名称</text>
+                    <text class="value">{{goods.goods_name}}</text>
+                  </view>
+                  <view class="item flex-wrp">
+                      <text class="key">卖家电话</text>
+                    <text class="value">{{goods.mobile}}</text>
+                  </view>
+                  <view class="item flex-wrp">
+                      <text class="key">商品介绍</text>
+                    <text class="value">{{goods.goods_content}}</text>
+                  </view>  
+                    
+                
+                <view class="title">规格参数</view>
+                <view wx:for="{{spec}}" wx:for-item="key" class="item flex-wrp">
+                    <text class="key">{{key[0]}}</text>
+                    <text class="value">￥{{key[1]}}</text>
+                </view>
+            </view>
+
+            <!--商品口碑-->
+            <view class="item goods-comments {{currTabIndex != 2 ? 'hidden' : ''}}">
+                <view class="rating">
+
+                </view>
+                <view class="list">
+                    <view class="item" wx:for="{{goodsCommentList}}">
+                        <view class="user-info flex-wrp">
+                            <view><image class="avatar" src="{{item.images ? item.images: '../../images/icon/avatar_moren_daishu.png'}}" /></view>
+                            <view class="flex-item">
+                                <view class="name">{{item.name ? item.name : '匿名用户' }}</view>
+                                <view class="age">{{item.create_time}}</view>
+                            </view>
+                        </view>
+
+                        <view class="comment">
+                            <view class="text">{{item.brief}}</view>
+
+                            <!--<view class="shop-reply" wx:if="{{item.shopReplyContent}}">门店回复：{{item.shopReplyContent}}</view>-->
+
+                            <view class="status">已购买该商品 {{item.sku_id}}</view>
+                        </view>
+                    </view>
+                </view>
+
+
+            </view>
+        </view>
+    </view>
+
+</view>
+
+<view class="footer">
+    <!-- 规格 -->
+    <view class="space">
+            <view class="cover-base {{is_show ? 'cover' : ''}}" catchtouchstart="sku_hidden"></view>
+            <view class="sku {{is_show ? 'sku_show' : ''}}">
+                <view class="basic">
+                    <view class="img-box">
+                        <image catchtouchstart="img_url_preview" class="basic-img" mode="aspectFill" src="{{goods.image}}" />
+                    </view>
+                    <view class="basic-text">
+                        <text class="title">{{goods.goods_name}}</text>
+                        <text class="price">¥ {{total_price ? total_price : goods.goods_price}}</text>
+                        <input type="text" name="goods_price" value="{{goods_price}}" hidden="true"/>
+                        <input type="text" name="total" value="{{total_price ? total_price : goods.goods_price}}" hidden="true"/>
+                        <text class="sku-selected">请选择 规格 地址 数量</text>
+                    </view>
+                    <view class="close-box" catchtouchstart="sku_hidden">
+                        <image class="close" src="/images/icon/round_close.png" />
+                    </view>
+                </view>
+                <view class="prop">
+                    <view class="prop-name">商品规格</view>
+                    <view class="prop-choose">
+                        <button wx:for="{{spec}}" wx:for-index="key" wx:for-item="val" class="prop-value {{check == key ? 'prop_active' : ''}}"  data-index="{{key}}" data-y="{{key}}" catchtouchstart="checked">{{val[0]}}</button>
+                        <input type="text" name="specname" value="{{specname}}" hidden="true"/>
+                        <input type="text" name="spec_sum" value="{{spec_sum}}" hidden="true"/>
+                        <input type="text" name="checked" value="0" hidden="true"/>
+                    </view>
+                </view>
+                 <view class="prop">
+                    <view class="prop-name">收货方式</view>
+                    <view class="prop-choose">
+                        <button class="prop-value {{method == 1 ? 'prop_active' : ''}}"  data-rec="1" catchtouchstart="takes" wx:if="{{goods.address != ''}}">自提点自取</button>
+                        <button class="prop-value {{method == 2 ? 'prop_active' : ''}}"  data-rec="2" catchtouchstart="express" wx:if="{{is_delivery == 1}}">快递</button>
+                    </view>
+                    <!--选择自提-->
+                    <view class="pickerAddress" hidden="{{takes}}">
+                    <picker class="pickerAddr" bindchange="bindPickerAddr" value="{{addrIndex}}" range="{{addressArray}}">
+                      <view class="picker">
+                        当前选择：{{addressArray[addrIndex]}}-{{userPhone}}
+                      </view>
+                      <input type="text" name="address" value="{{address}}-{{userPhone}}" hidden="true" />
+                    </picker>
+                    </view>
+                    <!--选择快递-->
+                    <view class="pickerAddress" hidden="{{express}}">
+                    <picker class="pickerAddr" bindchange="bindPickerPer" value="{{addrIndex}}" range="{{delArr}}" wx:if="{{personAddr.length != 0}}">
+                      <view class="picker">
+                        当前选择：{{delArr[addrIndex]}}
+                      </view>
+                    </picker>
+                    <navigator wx:else url="/pages/address/add">
+                      <button  class="prop-value">添加地址</button>
+                    </navigator>
+                    </view>
+                </view>
+                <!--邮费-->
+                <view class="prop" hidden="{{mailhidden}}">
+                    <view class="content">运费{{mailPri ? mailPri : 0}}元</view>                    
+                    <input type="text" name="mailprice" value="{{mailPri}}" hidden="true"/>
+                </view>
+                <view class="prop">
+                    <view class="prop-name ">数量</view>
+                    <view class="prop-choose">
+                        <image class="move rect" catchtouchstart="move" mode="aspectFit" src="{{order.goods_num == 1 ? '/images/icons/move_disable.png' : '/images/icons/move.png'}}" />
+                        <input class="num-value rect" bindblur="update" value="{{order.goods_num ? order.goods_num : 1 }}" name="goods_sum"/>
+                        <image class="add rect" catchtouchstart="add" mode="aspectFit" src="{{order.goods_num == 1 && order.goods_num <  store_count? '/images/icons/add.png' : '/images/icons/add_disable.png'}}" />
+                        <view class="quantity">库存{{store_count}}件</view>
+                    </view>
+                </view>
+                <view class="gutter"></view>
+                <view class="buy">
+                    <button  class="to-buy" formType="submit">确定</button>
+                </view>
+            </view>
+    </view>
+    
+    
+    <view class="option flex-wrp">
+        
+        <block wx:if="{{sales_out}}">
+            <view class="flex-item flex-wrp btn add-cart" bindtap="addCart">加入购物车</view>
+            <view class="flex-item flex-wrp btn buy-now" formType="reset" bindtap="dir">立即购买</view>
+        </block>
+        <block wx:else>
+            <view class="flex-item flex-wrp btn disabled">所在区域缺货</view>
+        </block>
+    </view>
+</view>
+</form>

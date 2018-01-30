@@ -46,8 +46,6 @@ Page({
     this.onShow;
     // var shop = wx.getStorageSync('shopInfo');
     // var user = wx.getStorageInfoSync('login');
-    
-
   },
   onShow: function () {
     var that = this;

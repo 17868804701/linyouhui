@@ -2,6 +2,7 @@
   "debug": true,
   "pages": [
     "pages/index/index",
+    "pages/aa/aa",
     "pages/review/review",
     "pages/login/login",
     "pages/shoppingCart/shoppingCart",

@@ -11,7 +11,7 @@
         <view class="name f1 c5">
             名称
         </view>
-        <input class="f1 c4" placeholder-class="ph-class" name="goods_name" placeholder="请输入商品名称" />
+        <input class="f1 c4" placeholder-class="ph-class" value='{{goods_name}}' name="goods_name" placeholder="请输入商品名称" />
     </view>
      <view class="text-input-item">
         <view class="name f1 c5">
@@ -51,7 +51,7 @@
         <text class="f1 c5">商品规格(必填第一行)</text>
     </view>
     <view class="tag-list">
-        <input  name="spec1" class="f1 c4" placeholder-class="ph-class" placeholder="规格名称1" />
+        <input  name="spec1" value='{{goods_name}}' class="f1 c4" placeholder-class="ph-class" placeholder="规格名称1" />
         <input  name="price1" class="f1 c4" placeholder-class="ph-class" data-id="one" bindblur="checknum" placeholder="规格价格1" value="{{one}}" />
         <input  name="store1" class="f1 c4" placeholder-class="ph-class" data-id="two" bindblur="checknum" value="{{two}}" placeholder="规格库存1" />
         <input  name="spec2" class="f1 c4" placeholder-class="ph-class"   placeholder="规格名称2" />
@@ -64,7 +64,7 @@
 </view>
 <view class="text-textarea-wrap" hidden="{{pannel ? 'true': ''}}">
     <text class="f1 c5">商品描述</text>
-    <textarea name="goods_content" placeholder-class="ph-class" placeholder="简介..." />
+    <textarea name="goods_content" value='{{goods_content}}' placeholder-class="ph-class" placeholder="简介..." />
 </view>
 <view class="tag-choice-wrap">
     <view class="choice-tag-cell" bindtap="Chosedel">

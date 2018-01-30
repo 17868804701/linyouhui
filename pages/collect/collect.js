@@ -29,14 +29,37 @@ Page({
       data: {
         uid: login.mid,
         shop: shop.id,
-        status: 1, //1是下架
+        status:1, //1是下架
       },
       method: 'GET',
       success: function (res) {
+        console.log("********************************************")
+        console.log(res.data)
         console.log(res.data, '商品000')
         // success
         that.setData({
           listgoods: res.data,
+        })
+      },
+
+    });
+
+
+// 被驳回的
+    wx.request({
+      url: `${app.globalData.API_URL}/mygoods`,
+      data: {
+        uid: login.mid,
+        shop: shop.id,
+        status: 3, //3是被驳回
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log("********************************************")
+        console.log(res.data, '驳回商品')
+        // success
+        that.setData({
+          bhgoods: res.data,
         })
       },
 
@@ -58,7 +81,6 @@ Page({
           mygoods: res.data,
         })
       },
-
     });
 
     // 商品销量
@@ -179,9 +201,11 @@ Page({
     })
   },
   // 修改商品跳转
-  editGoods:function(){
+  editGoods:function(e){
+    console.log(e.currentTarget.dataset.id)
+    var id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '../addgoods/index',
+      url: '../addgoods/index?id='+id,
     })
   }
 })

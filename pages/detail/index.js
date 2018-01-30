@@ -150,7 +150,7 @@ Page({
                   goods_id : e.id,
                 },
                 success:function(res){
-                  console.log(res,'评论')
+                  console.log(res,'评论**************************************')
                   me.setData({
                     goodsCommentList: res.data                    
                   })

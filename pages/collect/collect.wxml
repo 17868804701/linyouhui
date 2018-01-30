@@ -121,8 +121,8 @@
       <view class="weui_tab_bd_item" style="display:{{currentIndex ==4 ? 'block' : 'none'}};">
       <view class="weui-tab__content">
         <view class=" padding-wrap">
-          <view class="weui-cell weui-cell__access bg_color items-container" wx:for="{{listgoods}}">
-            <view class="weui-cell_hd" bindtap="lookdetail" data-id="{{item.id}}">
+          <view class="weui-cell weui-cell__access bg_color items-container" wx:for="{{bhgoods}}">
+            <view class="weui-cell_hd">
               <image src="{{item.goods_img}}" alt class="carts-image"></image>
             </view>
             <view class="weui-cell_bd carts-content" data-id="{{item.id}}">
@@ -134,8 +134,8 @@
               </view>
             </view>
             <view class="carts-btn">
-              <button class="downbtn" bindtap='editGoods' style='margin-top:20rpx;width:200rpx;'>修改商品</button>
-              <text class='tip_msg'>驳回原因：你的商品不符合国家标准</text>
+              <button class="downbtn" bindtap='editGoods' data-id="{{item.id}}" style='margin-top:20rpx;width:200rpx;'>修改商品</button>
+              <text class='tip_msg'>你所提交的商品被驳回，请重新提交</text>
             </view>
           </view>
         </view>
